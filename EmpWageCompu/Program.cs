@@ -2,45 +2,35 @@
 {
     public class Program
     {
-        public int EmpPresent = 1;
-        public int EmpHour = 8;
+        public int EmpHour = 0;
         public int WagesPerHour = 20;
-        public int PartTimeEmpHr = 4;
-        public int FullTimeEmp = 1;
-        public void CheckEmppresentAbsent()
+        public const int IS_FULL_TIME = 2;
+        public const int IS_PART_TIME = 1;
+
+        public int EmpWage()
         {
             Random Check = new Random();
-            int CheckEmp = Check.Next(0, 2);
+            int CheckEmp = Check.Next(0, 3);
 
-            if (EmpPresent == CheckEmp)
+            switch (CheckEmp)
             {
-                Console.WriteLine("Employee is Present");
-
-                Random TimeCheck = new Random();
-                int CheckTimeEmp = TimeCheck.Next(0, 2);
-
-                if (FullTimeEmp == CheckTimeEmp)
-                {
-                    int DailywageperHour = EmpHour * WagesPerHour;
-                    Console.WriteLine("DailyWages is " + DailywageperHour);
-
-                }
-                else
-                {
-                    int DailywageperHour1 = PartTimeEmpHr * WagesPerHour;
-                    Console.WriteLine("DailyWages is " + DailywageperHour1);
-                }
-
+                case IS_PART_TIME:
+                    EmpHour = 4;
+                    break;
+                case IS_FULL_TIME:
+                    EmpHour = 8;
+                    break;
+                default:
+                    EmpHour = 0;
+                    break;
             }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
-            }
+            int empwage = EmpHour * WagesPerHour;
+            return empwage;
         }
         public static void Main(string[] args)
         {
             Program prg = new Program();
-            prg.CheckEmppresentAbsent();
+            prg.EmpWage();
 
         }
     }
