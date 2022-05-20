@@ -28,6 +28,12 @@ namespace EmpWageCompu
         }
 
     }
+
+    public interface ICompanyEmpWage
+    {
+        public void AddCompany(string CompanyName, int WagePerHr, int FullHrPerDay, int PartHrPerDay, int MaxWorkHrs, int MaxWorkDays);
+        public void WageCalculation(string CompanyName);
+    }
     class  EmployeeWageComputation
     {
         private const int IS_FULL_TIME = 1;
