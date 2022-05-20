@@ -5,6 +5,8 @@
         public int EmpPresent = 1;
         public int EmpHour = 8;
         public int WagesPerHour = 20;
+        public int PartTimeEmpHr = 4;
+        public int FullTimeEmp = 1;
         public void CheckEmppresentAbsent()
         {
             Random Check = new Random();
@@ -13,8 +15,22 @@
             if (EmpPresent == CheckEmp)
             {
                 Console.WriteLine("Employee is Present");
-                int DailywageperHour = EmpHour * WagesPerHour;
-                Console.WriteLine("DailyWages is " + DailywageperHour);
+
+                Random TimeCheck = new Random();
+                int CheckTimeEmp = TimeCheck.Next(0, 2);
+
+                if (FullTimeEmp == CheckTimeEmp)
+                {
+                    int DailywageperHour = EmpHour * WagesPerHour;
+                    Console.WriteLine("DailyWages is " + DailywageperHour);
+
+                }
+                else
+                {
+                    int DailywageperHour1 = PartTimeEmpHr * WagesPerHour;
+                    Console.WriteLine("DailyWages is " + DailywageperHour1);
+                }
+
             }
             else
             {
