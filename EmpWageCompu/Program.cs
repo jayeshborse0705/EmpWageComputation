@@ -9,7 +9,7 @@
         }
         public static void Main(string[] args)
         {
-            EmployeeWageComputation empWageComputation = new EmployeeWageComputation(2);
+            EmployeeWageComputation empWageComputation = new EmployeeWageComputation(3);
             empWageComputation.AddCompany("TATA", 20, 8, 4, 100, 20);
             empWageComputation.AddCompany("MAHINDRA", 20, 8, 4, 100, 20);
             empWageComputation.CalculateEmpWage("tata");
