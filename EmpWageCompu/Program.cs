@@ -2,35 +2,50 @@
 {
     public class Program
     {
-        public int EmpHour = 0;
-        public int WagesPerHour = 20;
+        public const float WagesPerHour = 20;
+        public const int FullTime_WorkingHrs_PerDay = 8;
+        public const int PartTime_WorkingHrs_PerDay = 4;
         public const int IS_FULL_TIME = 2;
         public const int IS_PART_TIME = 1;
+        public const int IS_ABSENT = 0;
+        public const int Num_WorkingDays_PerMonth = 20;
+        public float EmpMonthlyWage = 0;
+        float EmpDailyWage = 0;
 
-        public int EmpWage()
+        public void MonthlyWage()
         {
-            Random Check = new Random();
-            int CheckEmp = Check.Next(0, 3);
-
-            switch (CheckEmp)
+            int DayNumber = 1;
+            int EmpWorkinghrs = 0;
+            while (DayNumber <= Num_WorkingDays_PerMonth)
             {
-                case IS_PART_TIME:
-                    EmpHour = 4;
-                    break;
-                case IS_FULL_TIME:
-                    EmpHour = 8;
-                    break;
-                default:
-                    EmpHour = 0;
-                    break;
+                Random Check = new Random();
+                int CheckEmp = Check.Next(0, 3);
+
+                switch (CheckEmp)
+                {
+                    case IS_ABSENT:
+                        EmpWorkinghrs = 0;
+                        break;
+                    case IS_PART_TIME:
+                        EmpWorkinghrs = PartTime_WorkingHrs_PerDay;
+                        break;
+                    case IS_FULL_TIME:
+                        EmpWorkinghrs = FullTime_WorkingHrs_PerDay;
+                        break;
+                }
+                EmpDailyWage = EmpWorkinghrs * WagesPerHour;
+
+                EmpMonthlyWage += EmpDailyWage;
+                DayNumber++;
+
             }
-            int empwage = EmpHour * WagesPerHour;
-            return empwage;
+            Console.WriteLine("Employee monthly wage : " + EmpMonthlyWage);
+
         }
         public static void Main(string[] args)
         {
             Program prg = new Program();
-            prg.EmpWage();
+            prg.MonthlyWage();
 
         }
     }
