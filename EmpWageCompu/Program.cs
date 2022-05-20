@@ -8,15 +8,17 @@
         public const int IS_FULL_TIME = 2;
         public const int IS_PART_TIME = 1;
         public const int IS_ABSENT = 0;
-        public const int Num_WorkingDays_PerMonth = 20;
-        public float EmpMonthlyWage = 0;
+        public const int MAX_WORKING_HOURS = 100;
+        public const int MAX_WORKING_DAYS = 20;
+        public float TotalWage = 0;
         float EmpDailyWage = 0;
 
-        public void MonthlyWage()
+        public void EmpWage()
         {
             int DayNumber = 1;
             int EmpWorkinghrs = 0;
-            while (DayNumber <= Num_WorkingDays_PerMonth)
+            int TotalWorkinghrs = 0;
+            while (DayNumber <= MAX_WORKING_DAYS || TotalWorkinghrs <= MAX_WORKING_HOURS)
             {
                 Random Check = new Random();
                 int CheckEmp = Check.Next(0, 3);
@@ -35,17 +37,18 @@
                 }
                 EmpDailyWage = EmpWorkinghrs * WagesPerHour;
 
-                EmpMonthlyWage += EmpDailyWage;
+                TotalWage += EmpDailyWage;
                 DayNumber++;
+                TotalWorkinghrs += EmpWorkinghrs;
 
             }
-            Console.WriteLine("Employee monthly wage : " + EmpMonthlyWage);
+            Console.WriteLine("Total Working Days : " + (DayNumber - 1) + "\nTotal working hours :" + TotalWorkinghrs +"\nTotal employee wage :" + TotalWage);
 
         }
         public static void Main(string[] args)
         {
             Program prg = new Program();
-            prg.MonthlyWage();
+            prg.EmpWage();
 
         }
     }
