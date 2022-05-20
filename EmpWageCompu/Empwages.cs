@@ -76,6 +76,10 @@ namespace EmpWageCompu
                 DayNumber++;
                 TotalWorkingHrs += EmpWorkingHrs;
             }
+            EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation();
+            employeeWageComputation.TotalWage = TotalWage;
+
+
             Console.WriteLine("The Name of the Company : " + CompanyName);
             Console.WriteLine("Total Working Days :" + DayNumber + "  " + "Total Working Hours :" + TotalWorkingHrs + " " + "Total Employee Wage :" + TotalWage);
         }
